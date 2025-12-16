@@ -7,6 +7,7 @@
     <base href="/" />  
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href=@Assets["_content/MudBlazor/MudBlazor.min.css"] rel="stylesheet" />
+    <link href="@Assets["_content/FSH.Framework.Blazor.UI/css/fsh-design-system.css"]" rel="stylesheet" />
     <link href="@Assets["_content/FSH.Framework.Blazor.UI/css/fsh-theme.css"]" rel="stylesheet" />
     <ImportMap />
     <link rel="icon" type="image/ico" href="favicon.ico" />
@@ -17,6 +18,23 @@
     <Routes @rendermode="InteractiveServer" />
     <script src="_framework/blazor.web.js"></script>
     <script src=@Assets["_content/MudBlazor/MudBlazor.min.js"]></script>
+    
+    <script>
+        // Theme management script
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            window.setTheme = function(newTheme) {
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            };
+            
+            window.getTheme = function() {
+                return localStorage.getItem('theme') || 'light';
+            };
+        })();
+    </script>
 </body>
 
 </html>

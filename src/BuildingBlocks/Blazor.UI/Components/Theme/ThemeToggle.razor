@@ -1,0 +1,37 @@
+@using FSH.Framework.Blazor.UI.Theme
+@inject IThemeService ThemeService
+
+<MudIconButton 
+    Icon="@(_isDarkMode ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)" 
+    Color="Color.Inherit" 
+    OnClick="ToggleTheme"
+    Title="@(_isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode")"
+    aria-label="@(_isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode")" />
+
+@code {
+    private bool _isDarkMode;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ThemeService.InitializeAsync();
+        _isDarkMode = ThemeService.IsDarkMode;
+        
+        ThemeService.OnThemeChanged += HandleThemeChanged;
+    }
+
+    private async Task ToggleTheme()
+    {
+        await ThemeService.ToggleThemeAsync();
+    }
+
+    private void HandleThemeChanged()
+    {
+        _isDarkMode = ThemeService.IsDarkMode;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        ThemeService.OnThemeChanged -= HandleThemeChanged;
+    }
+}

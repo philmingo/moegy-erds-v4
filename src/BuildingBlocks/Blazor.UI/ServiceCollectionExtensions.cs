@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using FSH.Framework.Blazor.UI.Theme;
+
 namespace FSH.Framework.Blazor.UI;
 
 public static class ServiceCollectionExtensions
@@ -15,7 +17,10 @@ public static class ServiceCollectionExtensions
 
         services.AddMudPopoverService();
         services.AddScoped<FSH.Framework.Blazor.UI.Components.Feedback.Snackbar.FshSnackbar>();
-        services.AddSingleton(FSH.Framework.Blazor.UI.Theme.FshTheme.Build());
+        services.AddSingleton(FshTheme.Build());
+        
+        // Add theme service
+        services.AddScoped<IThemeService, ThemeService>();
 
         return services;
     }
