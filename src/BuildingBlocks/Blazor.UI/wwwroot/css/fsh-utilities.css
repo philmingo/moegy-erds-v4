@@ -1,0 +1,506 @@
+/* 
+ * FSH Utility Classes - Shadcn-inspired
+ * Modern utility classes for composition and layout
+ */
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+/* Container with proper padding */
+.fsh-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+}
+
+.fsh-container-sm {
+    max-width: 640px;
+}
+
+.fsh-container-md {
+    max-width: 768px;
+}
+
+.fsh-container-lg {
+    max-width: 1024px;
+}
+
+.fsh-container-xl {
+    max-width: 1280px;
+}
+
+.fsh-container-full {
+    max-width: none;
+}
+
+/* ============================================
+   SPACING UTILITIES (like Tailwind/shadcn)
+   ============================================ */
+
+/* Gap utilities for flex/grid */
+.fsh-gap-1 { gap: var(--spacing-1); }
+.fsh-gap-2 { gap: var(--spacing-2); }
+.fsh-gap-3 { gap: var(--spacing-3); }
+.fsh-gap-4 { gap: var(--spacing-4); }
+.fsh-gap-6 { gap: var(--spacing-6); }
+.fsh-gap-8 { gap: var(--spacing-8); }
+
+/* Stack utilities (vertical spacing) */
+.fsh-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+.fsh-stack-1 { gap: var(--spacing-1); }
+.fsh-stack-2 { gap: var(--spacing-2); }
+.fsh-stack-3 { gap: var(--spacing-3); }
+.fsh-stack-4 { gap: var(--spacing-4); }
+.fsh-stack-6 { gap: var(--spacing-6); }
+.fsh-stack-8 { gap: var(--spacing-8); }
+
+/* Inline utilities (horizontal spacing) */
+.fsh-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.fsh-inline-1 { gap: var(--spacing-1); }
+.fsh-inline-2 { gap: var(--spacing-2); }
+.fsh-inline-3 { gap: var(--spacing-3); }
+.fsh-inline-4 { gap: var(--spacing-4); }
+.fsh-inline-6 { gap: var(--spacing-6); }
+.fsh-inline-8 { gap: var(--spacing-8); }
+
+/* ============================================
+   FORM UTILITIES
+   ============================================ */
+
+/* Form group - consistent spacing between form elements */
+.fsh-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+}
+
+.fsh-form-row {
+    display: grid;
+    gap: var(--spacing-4);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Form label styling */
+.fsh-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-2);
+}
+
+.fsh-label-required::after {
+    content: " *";
+    color: var(--error);
+}
+
+/* Input wrapper for consistent sizing */
+.fsh-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Helper text */
+.fsh-helper-text {
+    font-size: var(--text-xs);
+    color: var(--text-tertiary);
+    margin-top: var(--spacing-1);
+}
+
+.fsh-error-text {
+    font-size: var(--text-xs);
+    color: var(--error);
+    margin-top: var(--spacing-1);
+}
+
+/* ============================================
+   BUTTON GROUP (shadcn-style)
+   ============================================ */
+
+.fsh-button-group {
+    display: inline-flex;
+    gap: var(--spacing-2);
+    align-items: center;
+}
+
+.fsh-button-group-attached {
+    display: inline-flex;
+    gap: 0;
+}
+
+.fsh-button-group-attached > * {
+    border-radius: 0;
+}
+
+.fsh-button-group-attached > *:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+}
+
+.fsh-button-group-attached > *:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+}
+
+.fsh-button-group-attached > *:not(:last-child) {
+    border-right-width: 0;
+}
+
+/* ============================================
+   PAGE HEADER (shadcn-style)
+   ============================================ */
+
+.fsh-page-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-8);
+}
+
+.fsh-page-header-title {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.fsh-page-header-description {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.fsh-page-header-actions {
+    display: flex;
+    gap: var(--spacing-3);
+    align-items: center;
+    margin-top: var(--spacing-4);
+}
+
+/* Responsive page header */
+@media (min-width: 768px) {
+    .fsh-page-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    
+    .fsh-page-header-actions {
+        margin-top: 0;
+    }
+}
+
+/* ============================================
+   SECTION (shadcn-style)
+   ============================================ */
+
+.fsh-section {
+    margin-bottom: var(--spacing-8);
+}
+
+.fsh-section-header {
+    margin-bottom: var(--spacing-6);
+}
+
+.fsh-section-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-2) 0;
+}
+
+.fsh-section-description {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ============================================
+   CARD IMPROVEMENTS (shadcn-style)
+   ============================================ */
+
+.fsh-card-compact {
+    padding: var(--spacing-4);
+}
+
+.fsh-card-comfortable {
+    padding: var(--spacing-6);
+}
+
+.fsh-card-spacious {
+    padding: var(--spacing-8);
+}
+
+/* Card section dividers */
+.fsh-card-divider {
+    height: 1px;
+    background: var(--divider);
+    margin: var(--spacing-4) 0;
+}
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+
+.fsh-text-xs { font-size: var(--text-xs); }
+.fsh-text-sm { font-size: var(--text-sm); }
+.fsh-text-base { font-size: var(--text-base); }
+.fsh-text-lg { font-size: var(--text-lg); }
+.fsh-text-xl { font-size: var(--text-xl); }
+.fsh-text-2xl { font-size: var(--text-2xl); }
+.fsh-text-3xl { font-size: var(--text-3xl); }
+
+.fsh-text-primary { color: var(--text-primary); }
+.fsh-text-secondary { color: var(--text-secondary); }
+.fsh-text-tertiary { color: var(--text-tertiary); }
+.fsh-text-muted { color: var(--text-disabled); }
+
+.fsh-font-normal { font-weight: 400; }
+.fsh-font-medium { font-weight: 500; }
+.fsh-font-semibold { font-weight: 600; }
+.fsh-font-bold { font-weight: 700; }
+
+/* ============================================
+   FLEX UTILITIES
+   ============================================ */
+
+.fsh-flex {
+    display: flex;
+}
+
+.fsh-flex-col {
+    flex-direction: column;
+}
+
+.fsh-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.fsh-items-center {
+    align-items: center;
+}
+
+.fsh-items-start {
+    align-items: flex-start;
+}
+
+.fsh-items-end {
+    align-items: flex-end;
+}
+
+.fsh-justify-between {
+    justify-content: space-between;
+}
+
+.fsh-justify-center {
+    justify-content: center;
+}
+
+.fsh-justify-end {
+    justify-content: flex-end;
+}
+
+.fsh-flex-1 {
+    flex: 1 1 0%;
+}
+
+/* ============================================
+   GRID UTILITIES
+   ============================================ */
+
+.fsh-grid {
+    display: grid;
+}
+
+.fsh-grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.fsh-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.fsh-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fsh-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.fsh-grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.fsh-grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+
+@media (min-width: 768px) {
+    .fsh-grid-md-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fsh-grid-md-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fsh-grid-md-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+    .fsh-grid-lg-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fsh-grid-lg-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ============================================
+   BORDER & RADIUS UTILITIES
+   ============================================ */
+
+.fsh-border {
+    border: 1px solid var(--border-default);
+}
+
+.fsh-border-t {
+    border-top: 1px solid var(--border-default);
+}
+
+.fsh-border-b {
+    border-bottom: 1px solid var(--border-default);
+}
+
+.fsh-rounded-sm { border-radius: var(--radius-sm); }
+.fsh-rounded { border-radius: var(--radius-md); }
+.fsh-rounded-lg { border-radius: var(--radius-lg); }
+.fsh-rounded-xl { border-radius: var(--radius-xl); }
+.fsh-rounded-full { border-radius: var(--radius-full); }
+
+/* ============================================
+   SHADOW UTILITIES
+   ============================================ */
+
+.fsh-shadow-sm { box-shadow: var(--shadow-sm); }
+.fsh-shadow { box-shadow: var(--shadow-md); }
+.fsh-shadow-lg { box-shadow: var(--shadow-lg); }
+.fsh-shadow-xl { box-shadow: var(--shadow-xl); }
+.fsh-shadow-none { box-shadow: none; }
+
+/* ============================================
+   BACKGROUND UTILITIES
+   ============================================ */
+
+.fsh-bg-background { background-color: var(--surface-background); }
+.fsh-bg-paper { background-color: var(--surface-paper); }
+.fsh-bg-elevated { background-color: var(--surface-elevated); }
+.fsh-bg-muted { background-color: var(--surface-hover); }
+
+/* ============================================
+   WIDTH & HEIGHT UTILITIES
+   ============================================ */
+
+.fsh-w-full { width: 100%; }
+.fsh-w-auto { width: auto; }
+.fsh-h-full { height: 100%; }
+.fsh-h-auto { height: auto; }
+
+/* ============================================
+   VISIBILITY UTILITIES
+   ============================================ */
+
+.fsh-hidden { display: none; }
+.fsh-visible { display: block; }
+
+@media (min-width: 768px) {
+    .fsh-md-hidden { display: none; }
+    .fsh-md-visible { display: block; }
+}
+
+@media (min-width: 1024px) {
+    .fsh-lg-hidden { display: none; }
+    .fsh-lg-visible { display: block; }
+}
+
+/* ============================================
+   SEPARATOR (shadcn-style)
+   ============================================ */
+
+.fsh-separator {
+    height: 1px;
+    background: var(--divider);
+    border: none;
+    margin: var(--spacing-4) 0;
+}
+
+.fsh-separator-vertical {
+    width: 1px;
+    height: auto;
+    background: var(--divider);
+    margin: 0 var(--spacing-4);
+}
+
+/* ============================================
+   SCROLL AREA
+   ============================================ */
+
+.fsh-scroll-area {
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-300) transparent;
+}
+
+.fsh-scroll-area::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.fsh-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.fsh-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--neutral-300);
+    border-radius: var(--radius-full);
+}
+
+.fsh-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-400);
+}
+
+[data-theme="dark"] .fsh-scroll-area {
+    scrollbar-color: var(--neutral-600) transparent;
+}
+
+[data-theme="dark"] .fsh-scroll-area::-webkit-scrollbar-thumb {
+    background: var(--neutral-600);
+}
+
+[data-theme="dark"] .fsh-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: var(--neutral-500);
+}
+
+/* ============================================
+   ASPECT RATIO
+   ============================================ */
+
+.fsh-aspect-square {
+    aspect-ratio: 1 / 1;
+}
+
+.fsh-aspect-video {
+    aspect-ratio: 16 / 9;
+}
+
+/* ============================================
+   TRUNCATE TEXT
+   ============================================ */
+
+.fsh-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fsh-line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.fsh-line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

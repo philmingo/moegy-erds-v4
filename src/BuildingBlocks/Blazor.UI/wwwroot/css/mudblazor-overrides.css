@@ -1,81 +1,153 @@
 /* 
- * MudBlazor Component Overrides for Dark Mode
- * Ensures all components properly use theme colors
+ * MudBlazor Component Overrides - Shadcn-style Polish
+ * Better spacing, sizing, borders, and consistent styling
  */
 
-/* MudPaper - Cards and elevated surfaces */
-.mud-paper {
-    background-color: var(--surface-paper) !important;
-    color: var(--text-primary) !important;
+/* ============================================
+   IMPROVED INPUT FIELDS (shadcn-style)
+   ============================================ */
+
+.mud-input-control {
+    margin-bottom: 0 !important;
 }
 
-.mud-paper.mud-elevation-0 {
-    background-color: transparent !important;
-}
-
-/* MudCard */
-.mud-card {
-    background-color: var(--surface-paper) !important;
-    color: var(--text-primary) !important;
-}
-
-.mud-card-content {
-    color: var(--text-primary) !important;
-}
-
-/* MudTextField and inputs */
 .mud-input {
     color: var(--text-primary) !important;
 }
 
-.mud-input-slot input {
+.mud-input-slot input,
+.mud-input-slot textarea {
     color: var(--text-primary) !important;
+    font-size: var(--text-sm) !important;
+    padding: var(--spacing-2) var(--spacing-3) !important;
 }
 
 .mud-input-label {
     color: var(--text-secondary) !important;
+    font-size: var(--text-sm) !important;
+    font-weight: 500 !important;
 }
 
 .mud-input-helper-text {
     color: var(--text-tertiary) !important;
+    font-size: var(--text-xs) !important;
 }
 
 .mud-input-outlined .mud-input-outlined-border {
     border-color: var(--border-default) !important;
+    border-radius: var(--radius-md) !important;
 }
 
 .mud-input-outlined:hover .mud-input-outlined-border {
     border-color: var(--text-secondary) !important;
 }
 
-/* MudText */
-.mud-typography {
-    color: inherit;
+.mud-input-outlined.mud-input-focused .mud-input-outlined-border {
+    border-color: var(--primary-main) !important;
+    border-width: 2px !important;
 }
 
-.mud-typography-secondary {
+/* ============================================
+   IMPROVED BUTTONS (shadcn-style)
+   ============================================ */
+
+.mud-button-root {
+    border-radius: var(--radius-md) !important;
+    font-weight: 500 !important;
+    font-size: var(--text-sm) !important;
+    text-transform: none !important;
+    transition: all var(--transition-base) !important;
+    height: 40px !important;
+    padding: 0 var(--spacing-4) !important;
+}
+
+.mud-button-root.mud-button-size-small {
+    height: 36px !important;
+    padding: 0 var(--spacing-3) !important;
+    font-size: var(--text-xs) !important;
+}
+
+.mud-button-root.mud-button-size-large {
+    height: 44px !important;
+    padding: 0 var(--spacing-6) !important;
+}
+
+.mud-button-filled {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.mud-button-filled:hover:not(:disabled) {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.mud-button-outlined {
+    border-width: 1px !important;
+    border-color: var(--border-default) !important;
+}
+
+.mud-button-outlined:hover:not(:disabled) {
+    background-color: var(--surface-hover) !important;
+}
+
+/* ============================================
+   MudPaper & MudCard
+   ============================================ */
+
+.mud-paper {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--border-default);
+}
+
+.mud-card {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    border: 1px solid var(--border-default);
+}
+
+.mud-card-content {
+    padding: var(--spacing-6) !important;
+}
+
+/* ============================================
+   MudText Typography
+   ============================================ */
+
+.mud-typography-h4 {
+    font-size: var(--text-2xl) !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-typography-body2 {
+    font-size: var(--text-sm) !important;
     color: var(--text-secondary) !important;
 }
 
-/* MudAppBar */
+/* ============================================
+   MudAppBar & Navigation
+   ============================================ */
+
 .mud-appbar {
     background-color: var(--surface-paper) !important;
     color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: none !important;
 }
 
-/* MudDrawer */
 .mud-drawer {
     background-color: var(--surface-paper) !important;
-    color: var(--text-primary) !important;
+    border-right: 1px solid var(--border-default);
 }
 
-.mud-drawer-content {
-    background-color: var(--surface-paper) !important;
-}
-
-/* MudNavMenu */
 .mud-nav-link {
     color: var(--text-secondary) !important;
+    border-radius: var(--radius-md) !important;
+    margin: var(--spacing-1) var(--spacing-2) !important;
+    padding: var(--spacing-2) var(--spacing-3) !important;
+    font-size: var(--text-sm) !important;
 }
 
 .mud-nav-link:hover {
@@ -87,130 +159,15 @@
     background-color: var(--surface-elevated) !important;
 }
 
-/* MudTable */
-.mud-table {
-    background-color: var(--surface-paper) !important;
-}
+/* ============================================
+   Global Styling
+   ============================================ */
 
-.mud-table-cell {
-    color: var(--text-primary) !important;
-    border-bottom-color: var(--divider) !important;
-}
-
-.mud-table-head {
-    background-color: var(--surface-elevated) !important;
-}
-
-.mud-table-row:hover {
-    background-color: var(--surface-hover) !important;
-}
-
-/* MudDialog */
-.mud-dialog {
-    background-color: var(--surface-paper) !important;
-    color: var(--text-primary) !important;
-}
-
-.mud-dialog-title {
-    color: var(--text-primary) !important;
-}
-
-.mud-dialog-content {
-    color: var(--text-primary) !important;
-}
-
-/* MudPopover */
-.mud-popover {
-    background-color: var(--surface-elevated) !important;
-    color: var(--text-primary) !important;
-}
-
-/* MudMenu */
-.mud-menu {
-    background-color: var(--surface-elevated) !important;
-}
-
-.mud-menu-item {
-    color: var(--text-primary) !important;
-}
-
-.mud-menu-item:hover {
-    background-color: var(--surface-hover) !important;
-}
-
-/* MudSelect */
-.mud-select {
-    color: var(--text-primary) !important;
-}
-
-.mud-select-input {
-    color: var(--text-primary) !important;
-}
-
-/* MudAutocomplete */
-.mud-autocomplete {
-    color: var(--text-primary) !important;
-}
-
-/* MudDivider */
-.mud-divider {
-    border-color: var(--divider) !important;
-}
-
-/* Main content background */
-.mud-main-content {
-    background-color: var(--surface-background) !important;
-}
-
-/* Container backgrounds */
-.mud-container {
-    background-color: transparent !important;
-}
-
-/* Ensure body has correct background */
 body {
     background-color: var(--surface-background) !important;
     color: var(--text-primary) !important;
 }
 
-/* Fix for avatar with no image */
-.mud-avatar {
-    background-color: var(--surface-elevated) !important;
-    color: var(--text-primary) !important;
-}
-
-/* Buttons - ensure proper contrast */
-.mud-button-filled.mud-button-filled-primary {
-    background-color: var(--primary-main) !important;
-    color: white !important;
-}
-
-.mud-button-filled.mud-button-filled-secondary {
-    background-color: var(--secondary-main) !important;
-    color: white !important;
-}
-
-.mud-button-outlined {
-    border-color: var(--border-default) !important;
-    color: var(--text-primary) !important;
-}
-
-.mud-button-outlined:hover {
-    background-color: var(--surface-hover) !important;
-}
-
-/* Icon colors */
-.mud-icon-root {
-    color: currentColor;
-}
-
-/* Ensure disabled states work */
-.mud-disabled {
-    color: var(--text-disabled) !important;
-    opacity: 0.6;
-}
-
-/* Fix for outlined MudCard */
-.mud-card.mud-paper-outlined {
-    border-color: var(--border-default) !important;
+.mud-main-content {
+    background-color: var(--surface-background) !important;
 }

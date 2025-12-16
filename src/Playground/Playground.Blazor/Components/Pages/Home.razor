@@ -1,145 +1,254 @@
+@page "/"
 @page "/welcome"
 @using FSH.Framework.Blazor.UI.Components.Cards
 @using FSH.Framework.Blazor.UI.Components.Buttons
 @inherits ComponentBase
 
-<div class="home-shell">
-    <MudText Typo="Typo.h3" Class="mb-6" Style="color: var(--text-primary);">Welcome to FSH Playground</MudText>
-    
-    @* Stat Cards Row *@
-    <MudGrid Class="mb-6">
-        <MudItem xs="12" sm="6" md="3">
+<div class="fsh-container fsh-container-xl">
+    @* Page Header *@
+    <div class="fsh-page-header">
+        <div>
+            <h1 class="fsh-page-header-title">Welcome to FSH Playground</h1>
+            <p class="fsh-page-header-description">
+                Modern design system with enhanced components, dark mode, and polished UI
+            </p>
+        </div>
+        <div class="fsh-page-header-actions">
+            <FshButton ButtonVariant="FshButtonVariant.Outline" StartIcon="@Icons.Material.Filled.Refresh">
+                Refresh
+            </FshButton>
+            <FshButton ButtonVariant="FshButtonVariant.Gradient" StartIcon="@Icons.Material.Filled.Add">
+                New Item
+            </FshButton>
+        </div>
+    </div>
+
+    @* Stat Cards Section *@
+    <div class="fsh-section">
+        <div class="fsh-grid fsh-grid-cols-1 fsh-grid-md-cols-2 fsh-grid-lg-cols-4 fsh-gap-4">
             <FshStatCard Value="2,543"
                         Label="Total Users"
                         Icon="@Icons.Material.Filled.People"
                         IconColor="var(--primary-main)"
                         Trend="12.5m" />
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
+            
             <FshStatCard Value="$45.2K"
                         Label="Revenue"
                         Icon="@Icons.Material.Filled.AttachMoney"
                         IconColor="var(--success)"
                         Trend="8.2m" />
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
+            
             <FshStatCard Value="328"
                         Label="Active Projects"
                         Icon="@Icons.Material.Filled.FolderOpen"
                         IconColor="var(--info)"
                         Trend="-3.1m" />
-        </MudItem>
-        <MudItem xs="12" sm="6" md="3">
+            
             <FshStatCard Value="94%"
                         Label="Satisfaction"
                         Icon="@Icons.Material.Filled.ThumbUp"
                         IconColor="var(--warning)"
                         Trend="5.7m" />
-        </MudItem>
-    </MudGrid>
+        </div>
+    </div>
 
-    @* Enhanced Cards Grid *@
-    <MudGrid Class="mb-6">
-        <MudItem xs="12" md="4">
+    @* Enhanced Cards Section *@
+    <div class="fsh-section">
+        <div class="fsh-section-header">
+            <h2 class="fsh-section-title">Quick Access</h2>
+            <p class="fsh-section-description">Navigate to commonly used sections</p>
+        </div>
+        
+        <div class="fsh-grid fsh-grid-cols-1 fsh-grid-md-cols-3 fsh-gap-6">
             <FshCard Title="Dashboard"
                      Subtitle="View analytics and metrics"
                      Interactive="true"
                      Gradient="true">
-                <MudIcon Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large" Class="mb-3"/>
-                <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-                    Access real-time analytics, charts, and key performance indicators for your business.
-                </MudText>
+                <ChildContent>
+                    <div class="fsh-flex fsh-flex-col fsh-items-center fsh-gap-3" style="padding: var(--spacing-4) 0;">
+                        <MudIcon Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large"/>
+                        <MudText Typo="Typo.body2" Align="Align.Center" Class="fsh-text-secondary">
+                            Access real-time analytics and key performance indicators
+                        </MudText>
+                    </div>
+                </ChildContent>
+                <Actions>
+                    <FshButton Size="Size.Small" ButtonVariant="FshButtonVariant.Ghost">
+                        View
+                    </FshButton>
+                </Actions>
             </FshCard>
-        </MudItem>
-        
-        <MudItem xs="12" md="4">
+            
             <FshCard Title="Profile"
                      Subtitle="Manage your account"
                      Interactive="true"
                      Status="CardStatus.Success">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" Size="Size.Large" Class="mb-3"/>
-                <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-                    Update your personal information, settings, and preferences.
-                </MudText>
+                <ChildContent>
+                    <div class="fsh-flex fsh-flex-col fsh-items-center fsh-gap-3" style="padding: var(--spacing-4) 0;">
+                        <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" Size="Size.Large"/>
+                        <MudText Typo="Typo.body2" Align="Align.Center" Class="fsh-text-secondary">
+                            Update your personal information and settings
+                        </MudText>
+                    </div>
+                </ChildContent>
+                <Actions>
+                    <FshButton Size="Size.Small" Color="Color.Secondary">
+                        Edit Profile
+                    </FshButton>
+                </Actions>
             </FshCard>
-        </MudItem>
-        
-        <MudItem xs="12" md="4">
+            
             <FshCard Title="Audits"
                      Subtitle="Track activities"
                      Interactive="true"
                      IconBadge="@Icons.Material.Filled.Assessment"
                      ShowIconBadge="true">
-                <MudText Typo="Typo.body2" Style="color: var(--text-secondary); margin-top: var(--spacing-4);">
-                    Monitor system events, user activities, and security logs.
-                </MudText>
+                <ChildContent>
+                    <div class="fsh-flex fsh-flex-col fsh-items-center fsh-gap-3" style="padding: var(--spacing-4) 0; margin-top: var(--spacing-4);">
+                        <MudText Typo="Typo.body2" Align="Align.Center" Class="fsh-text-secondary">
+                            Monitor system events and security logs
+                        </MudText>
+                    </div>
+                </ChildContent>
+                <Actions>
+                    <FshButton Size="Size.Small" ButtonVariant="FshButtonVariant.Outline" Color="Color.Info">
+                        View Logs
+                    </FshButton>
+                </Actions>
             </FshCard>
-        </MudItem>
-    </MudGrid>
+        </div>
+    </div>
 
-    @* Button Examples *@
-    <MudPaper Class="pa-6 mb-6" Elevation="1" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
-        <MudText Typo="Typo.h6" Class="mb-4" Style="color: var(--text-primary);">
-            <MudIcon Icon="@Icons.Material.Filled.Mouse" Color="Color.Primary" Class="mr-2"/>
-            Enhanced Buttons
-        </MudText>
-        <MudStack Row="true" Spacing="3" Class="mb-4" Wrap="Wrap.Wrap">
-            <FshButton ButtonVariant="FshButtonVariant.Gradient">Gradient Button</FshButton>
-            <FshButton ButtonVariant="FshButtonVariant.Outline" Color="Color.Primary">Outline Button</FshButton>
-            <FshButton ButtonVariant="FshButtonVariant.Ghost">Ghost Button</FshButton>
-            <FshButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Success">With Icon</FshButton>
-            <FshButton Loading="true" Color="Color.Primary">Loading...</FshButton>
-        </MudStack>
-    </MudPaper>
+    @* Component Showcase Section *@
+    <div class="fsh-section">
+        <div class="fsh-section-header">
+            <h2 class="fsh-section-title">Component Showcase</h2>
+            <p class="fsh-section-description">Enhanced UI components with modern styling</p>
+        </div>
 
-    @* Info Card *@
-    <FshCard Status="CardStatus.Info" Class="mb-6">
-        <HeaderContent>
-            <MudStack Row="true" AlignItems="AlignItems.Center">
-                <MudIcon Icon="@Icons.Material.Filled.Lightbulb" Color="Color.Warning" />
-                <div>
-                    <MudText Typo="Typo.h6" Style="color: var(--text-primary); margin: 0;">
-                        Design System Active
+        <div class="fsh-grid fsh-grid-cols-1 fsh-grid-md-cols-2 fsh-gap-6">
+            @* Button Examples *@
+            <FshCard Title="Enhanced Buttons" Subtitle="Multiple variants and states">
+                <ChildContent>
+                    <div class="fsh-stack-4">
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                BUTTON VARIANTS
+                            </MudText>
+                            <div class="fsh-inline-2 fsh-flex-wrap">
+                                <FshButton ButtonVariant="FshButtonVariant.Gradient" Size="Size.Small">Gradient</FshButton>
+                                <FshButton ButtonVariant="FshButtonVariant.Outline" Color="Color.Primary" Size="Size.Small">Outline</FshButton>
+                                <FshButton ButtonVariant="FshButtonVariant.Ghost" Size="Size.Small">Ghost</FshButton>
+                                <FshButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Success" Size="Size.Small">With Icon</FshButton>
+                            </div>
+                        </div>
+                        
+                        <div class="fsh-separator"></div>
+                        
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                BUTTON STATES
+                            </MudText>
+                            <div class="fsh-inline-2 fsh-flex-wrap">
+                                <FshButton Loading="true" Size="Size.Small">Loading...</FshButton>
+                                <FshButton Disabled="true" Size="Size.Small">Disabled</FshButton>
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </FshCard>
+
+            @* Status Indicators *@
+            <FshCard Title="Status & Badges" Subtitle="Visual indicators">
+                <ChildContent>
+                    <div class="fsh-stack-4">
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                STATUS BADGES
+                            </MudText>
+                            <div class="fsh-inline-2 fsh-flex-wrap">
+                                <span class="fsh-badge fsh-badge-success">Active</span>
+                                <span class="fsh-badge fsh-badge-warning">Pending</span>
+                                <span class="fsh-badge fsh-badge-error">Error</span>
+                                <span class="fsh-badge fsh-badge-info">Info</span>
+                                <span class="fsh-badge fsh-badge-primary">Primary</span>
+                            </div>
+                        </div>
+                        
+                        <div class="fsh-separator"></div>
+                        
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                STATUS CARDS
+                            </MudText>
+                            <div class="fsh-stack-2">
+                                <div class="fsh-border fsh-rounded fsh-inline-3 fsh-card-compact fsh-card-status status-success" style="border-left-width: 4px;">
+                                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" />
+                                    <span class="fsh-text-sm">All systems operational</span>
+                                </div>
+                                <div class="fsh-border fsh-rounded fsh-inline-3 fsh-card-compact fsh-card-status status-warning" style="border-left-width: 4px;">
+                                    <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" Size="Size.Small" />
+                                    <span class="fsh-text-sm">3 items need attention</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </FshCard>
+
+            @* Loading States *@
+            <FshCard Title="Loading States" Subtitle="Skeleton and spinner">
+                <ChildContent>
+                    <div class="fsh-grid fsh-grid-cols-2 fsh-gap-4">
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                SKELETON LOADER
+                            </MudText>
+                            <div class="fsh-skeleton fsh-skeleton-title" style="margin-bottom: var(--spacing-2);"></div>
+                            <div class="fsh-skeleton fsh-skeleton-text" style="margin-bottom: var(--spacing-2);"></div>
+                            <div class="fsh-skeleton fsh-skeleton-text" style="width: 80%;"></div>
+                        </div>
+                        <div>
+                            <MudText Typo="Typo.caption" Class="fsh-text-tertiary" Style="margin-bottom: var(--spacing-2);">
+                                SPINNERS
+                            </MudText>
+                            <div class="fsh-inline-3">
+                                <div class="fsh-spinner fsh-spinner-sm"></div>
+                                <div class="fsh-spinner"></div>
+                                <div class="fsh-spinner fsh-spinner-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </FshCard>
+
+            @* Info Card *@
+            <FshCard Status="CardStatus.Info">
+                <HeaderContent>
+                    <div class="fsh-inline-3">
+                        <MudIcon Icon="@Icons.Material.Filled.Lightbulb" Color="Color.Warning" />
+                        <div>
+                            <MudText Typo="Typo.h6" Style="margin: 0;">Design System Active</MudText>
+                            <MudText Typo="Typo.caption" Class="fsh-text-secondary">
+                                Phase 2: Core Components
+                            </MudText>
+                        </div>
+                    </div>
+                </HeaderContent>
+                <ChildContent>
+                    <MudText Typo="Typo.body2" Class="fsh-text-secondary" Style="margin-bottom: var(--spacing-3);">
+                        This interface features shadcn-inspired styling with consistent spacing, modern components, and full dark mode support.
                     </MudText>
-                    <MudText Typo="Typo.caption" Style="color: var(--text-secondary);">
-                        Phase 2: Core Components
-                    </MudText>
-                </div>
-            </MudStack>
-        </HeaderContent>
-        <ChildContent>
-            <MudText Typo="Typo.body2" Class="mb-3" Style="color: var(--text-secondary);">
-                This interface now features enhanced components with interactive states, animations, and modern styling.
-                Toggle between light and dark mode using the button in the top-right corner!
-            </MudText>
-            <div class="fsh-badge-group">
-                <span class="fsh-badge fsh-badge-success">Responsive</span>
-                <span class="fsh-badge fsh-badge-primary">Accessible</span>
-                <span class="fsh-badge fsh-badge-info">Modern</span>
-            </div>
-        </ChildContent>
-    </FshCard>
-
-    @* Loading States Example *@
-    <FshCard Title="Loading States" Subtitle="Skeleton and spinner examples">
-        <MudGrid>
-            <MudItem xs="12" md="6">
-                <MudText Typo="Typo.subtitle2" Class="mb-3">Skeleton Loader</MudText>
-                <div class="fsh-skeleton fsh-skeleton-title mb-2"></div>
-                <div class="fsh-skeleton fsh-skeleton-text mb-2"></div>
-                <div class="fsh-skeleton fsh-skeleton-text mb-2" style="width: 80%;"></div>
-                <div class="fsh-skeleton fsh-skeleton-text" style="width: 60%;"></div>
-            </MudItem>
-            <MudItem xs="12" md="6">
-                <MudText Typo="Typo.subtitle2" Class="mb-3">Spinner</MudText>
-                <MudStack Row="true" Spacing="3" AlignItems="AlignItems.Center">
-                    <div class="fsh-spinner fsh-spinner-sm"></div>
-                    <div class="fsh-spinner"></div>
-                    <div class="fsh-spinner fsh-spinner-lg"></div>
-                </MudStack>
-            </MudItem>
-        </MudGrid>
-    </FshCard>
+                    <div class="fsh-inline-2 fsh-flex-wrap">
+                        <span class="fsh-badge fsh-badge-success">Responsive</span>
+                        <span class="fsh-badge fsh-badge-primary">Accessible</span>
+                        <span class="fsh-badge fsh-badge-info">Modern</span>
+                        <span class="fsh-badge fsh-badge-warning">Polished</span>
+                    </div>
+                </ChildContent>
+            </FshCard>
+        </div>
+    </div>
 </div>
 
 <style>
