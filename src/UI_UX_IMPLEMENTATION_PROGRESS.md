@@ -62,12 +62,39 @@
 ### Testing Checklist
 - ? Build successful
 - ? Theme toggle integrated in layout (AppBar)
-- ? Dark mode rendering correctly (TEST REQUIRED)
-- ? Light mode rendering correctly (TEST REQUIRED)
+- ? Dark mode rendering fixed (MudBlazor overrides added)
+- ? Dark mode visual verification (TEST REQUIRED)
+- ? Light mode visual verification (TEST REQUIRED)
 - ? Theme persistence across page refreshes (TEST REQUIRED)
 - ? CSS variables accessible in components
 - ? MudBlazor components using new theme
 - ? Home page demonstrates design system
+- ? Profile page CSS uses CSS variables (hardcoded colors removed)
+
+### Latest Fix (January 2025)
+
+**Dark Mode Rendering Issue Fixed:**
+
+The initial integration had an issue where dark mode wasn't rendering correctly. Cards and papers showed white/light backgrounds instead of dark surfaces.
+
+**Root Cause:**
+- Component CSS files had hardcoded light-mode colors (e.g., `background: #f8fafc`)
+- MudBlazor components weren't respecting the theme due to inline styles
+- No CSS overrides to force theme-aware colors
+
+**Solution Applied:**
+1. ? Created `mudblazor-overrides.css` - Comprehensive MudBlazor component overrides
+2. ? Fixed `Profile.razor.css` - Replaced all hardcoded colors with CSS variables
+3. ? Enhanced `fsh-theme.css` - Added global html/body background enforcement
+4. ? Updated `App.razor` - Added mudblazor-overrides.css to load order
+
+**Files Updated:**
+- `BuildingBlocks/Blazor.UI/wwwroot/css/mudblazor-overrides.css` (NEW)
+- `Playground/Playground.Blazor/Components/Pages/Profile.razor.css` (FIXED)
+- `BuildingBlocks/Blazor.UI/wwwroot/css/fsh-theme.css` (ENHANCED)
+- `Playground/Playground.Blazor/Components/App.razor` (UPDATED)
+
+See `DARK_MODE_FIX.md` for detailed explanation.
 
 ### Key Implementation Notes
 
