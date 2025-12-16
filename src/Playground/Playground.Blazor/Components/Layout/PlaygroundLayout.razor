@@ -13,6 +13,7 @@
 @inject ITenantThemeState TenantThemeState
 @inject FSH.Playground.Blazor.Services.Api.ITokenSessionAccessor TokenSessionAccessor
 @inject FSH.Playground.Blazor.Services.Api.ITokenAccessor TokenAccessor
+@inject IJSRuntime JS
 
 <MudThemeProvider Theme="@_theme" IsDarkMode="_isDarkMode" />
 <MudPopoverProvider />
@@ -77,11 +78,12 @@ else
         TenantThemeState.OnThemeChanged += HandleThemeChanged;
     }
 
-    private void HandleThemeChanged()
+    private async void HandleThemeChanged()
     {
         _theme = TenantThemeState.Theme;
         _isDarkMode = TenantThemeState.IsDarkMode;
-        InvokeAsync(StateHasChanged);
+        await ApplyThemeAttributeAsync();
+        await InvokeAsync(StateHasChanged);
     }
 
     public void Dispose()
@@ -92,6 +94,12 @@ else
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            // Apply theme attribute to document root
+            await ApplyThemeAttributeAsync();
+        }
 
         if (firstRender && !_authStatusLoaded)
         {
@@ -168,9 +176,10 @@ else
         _drawerOpen = !_drawerOpen;
     }
 
-    private void DarkModeToggle()
+    private async void DarkModeToggle()
     {
         TenantThemeState.ToggleDarkMode();
+        await ApplyThemeAttributeAsync();
     }
 
     public string DarkLightModeButtonIcon => _isDarkMode switch
@@ -204,6 +213,20 @@ else
         catch
         {
             // swallow; fall back to fresh login if session cannot be hydrated
+        }
+    }
+
+    private async Task ApplyThemeAttributeAsync()
+    {
+        try
+        {
+            var theme = _isDarkMode ? "dark" : "light";
+            await JS.InvokeVoidAsync("eval", $"document.documentElement.setAttribute('data-theme', '{theme}')");
+        }
+        catch (Exception ex)
+        {
+            // Silently fail if JS interop is not available
+            Console.WriteLine($"Failed to apply theme attribute: {ex.Message}");
         }
     }
 }

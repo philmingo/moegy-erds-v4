@@ -1,6 +1,62 @@
 @page "/welcome"
 @inherits ComponentBase
+
 <div class="home-shell">
-    <MudText Typo="Typo.h5" Class="mb-3">Welcome</MudText>
-    <MudText Typo="Typo.body1">Use the navigation to access Dashboard, Profile, and Audits.</MudText>
+    <MudText Typo="Typo.h3" Class="mb-6" Style="color: var(--text-primary);">Welcome to FSH Playground</MudText>
+    
+    <MudGrid>
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large" Class="mb-3"/>
+                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Dashboard</MudText>
+                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+                        View analytics, metrics, and key performance indicators.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" Size="Size.Large" Class="mb-3"/>
+                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Profile</MudText>
+                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+                        Manage your account settings and preferences.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
+                <MudCardContent>
+                    <MudIcon Icon="@Icons.Material.Filled.Assessment" Color="Color.Tertiary" Size="Size.Large" Class="mb-3"/>
+                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Audits</MudText>
+                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+                        Track system events and user activities.
+                    </MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <MudPaper Class="pa-6 mt-6" Elevation="1" Style="background: var(--surface-paper); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-main);">
+        <MudText Typo="Typo.h6" Class="mb-3" Style="color: var(--text-primary);">
+            <MudIcon Icon="@Icons.Material.Filled.Lightbulb" Color="Color.Warning" Class="mr-2"/>
+            Design System Active
+        </MudText>
+        <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+            This interface now uses the new design system with CSS variables. Toggle between light and dark mode using the button in the top-right corner to see the theme changes in action!
+        </MudText>
+    </MudPaper>
 </div>
+
+<style>
+    .home-shell {
+        background: var(--surface-background);
+        min-height: 100vh;
+        padding: var(--spacing-6);
+    }
+</style>

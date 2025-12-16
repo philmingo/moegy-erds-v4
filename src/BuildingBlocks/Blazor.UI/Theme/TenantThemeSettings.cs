@@ -51,29 +51,29 @@ public sealed class TenantThemeSettings
 
 public sealed class PaletteSettings
 {
-    public string Primary { get; set; } = "#2563EB";
-    public string Secondary { get; set; } = "#0F172A";
-    public string Tertiary { get; set; } = "#6366F1";
-    public string Background { get; set; } = "#F8FAFC";
-    public string Surface { get; set; } = "#FFFFFF";
-    public string Error { get; set; } = "#DC2626";
+    public string Primary { get; set; } = "#6366F1";       // Updated to match FshTheme
+    public string Secondary { get; set; } = "#EC4899";     // Updated to match FshTheme
+    public string Tertiary { get; set; } = "#10B981";      // Updated to match FshTheme
+    public string Background { get; set; } = "#FFFFFF";    // Clean white
+    public string Surface { get; set; } = "#FFFFFF";       // Clean white
+    public string Error { get; set; } = "#EF4444";         // Updated to match FshTheme
     public string Warning { get; set; } = "#F59E0B";
-    public string Success { get; set; } = "#16A34A";
-    public string Info { get; set; } = "#0284C7";
+    public string Success { get; set; } = "#10B981";       // Updated to match FshTheme
+    public string Info { get; set; } = "#3B82F6";          // Updated to match FshTheme
 
     public static PaletteSettings DefaultLight => new();
 
     public static PaletteSettings DefaultDark => new()
     {
-        Primary = "#38BDF8",
-        Secondary = "#94A3B8",
-        Tertiary = "#818CF8",
-        Background = "#0B1220",
-        Surface = "#111827",
-        Error = "#F87171",
+        Primary = "#818CF8",       // Updated to match FshTheme
+        Secondary = "#F472B6",     // Updated to match FshTheme
+        Tertiary = "#34D399",      // Updated to match FshTheme
+        Background = "#0F0F12",    // Updated to match FshTheme
+        Surface = "#18181B",       // Updated to match FshTheme
+        Error = "#F87171",         // Updated to match FshTheme
         Warning = "#FBBF24",
-        Success = "#22C55E",
-        Info = "#38BDF8"
+        Success = "#34D399",       // Updated to match FshTheme
+        Info = "#60A5FA"           // Updated to match FshTheme
     };
 
     public PaletteLight ToPaletteLight()

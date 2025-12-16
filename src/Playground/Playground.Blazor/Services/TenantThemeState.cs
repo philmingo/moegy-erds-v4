@@ -109,27 +109,27 @@ public sealed class TenantThemeState : ITenantThemeState
         {
             LightPalette = new PaletteSettings
             {
-                Primary = dto.LightPalette?.Primary ?? "#2563EB",
-                Secondary = dto.LightPalette?.Secondary ?? "#0F172A",
-                Tertiary = dto.LightPalette?.Tertiary ?? "#6366F1",
-                Background = dto.LightPalette?.Background ?? "#F8FAFC",
+                Primary = dto.LightPalette?.Primary ?? "#6366F1",     // Updated to match FshTheme
+                Secondary = dto.LightPalette?.Secondary ?? "#EC4899",  // Updated to match FshTheme
+                Tertiary = dto.LightPalette?.Tertiary ?? "#10B981",   // Updated to match FshTheme
+                Background = dto.LightPalette?.Background ?? "#FFFFFF",
                 Surface = dto.LightPalette?.Surface ?? "#FFFFFF",
-                Error = dto.LightPalette?.Error ?? "#DC2626",
+                Error = dto.LightPalette?.Error ?? "#EF4444",         // Updated to match FshTheme
                 Warning = dto.LightPalette?.Warning ?? "#F59E0B",
-                Success = dto.LightPalette?.Success ?? "#16A34A",
-                Info = dto.LightPalette?.Info ?? "#0284C7"
+                Success = dto.LightPalette?.Success ?? "#10B981",     // Updated to match FshTheme
+                Info = dto.LightPalette?.Info ?? "#3B82F6"            // Updated to match FshTheme
             },
             DarkPalette = new PaletteSettings
             {
-                Primary = dto.DarkPalette?.Primary ?? "#38BDF8",
-                Secondary = dto.DarkPalette?.Secondary ?? "#94A3B8",
-                Tertiary = dto.DarkPalette?.Tertiary ?? "#818CF8",
-                Background = dto.DarkPalette?.Background ?? "#0B1220",
-                Surface = dto.DarkPalette?.Surface ?? "#111827",
-                Error = dto.DarkPalette?.Error ?? "#F87171",
+                Primary = dto.DarkPalette?.Primary ?? "#818CF8",      // Updated to match FshTheme
+                Secondary = dto.DarkPalette?.Secondary ?? "#F472B6",   // Updated to match FshTheme
+                Tertiary = dto.DarkPalette?.Tertiary ?? "#34D399",    // Updated to match FshTheme
+                Background = dto.DarkPalette?.Background ?? "#0F0F12", // Updated to match FshTheme
+                Surface = dto.DarkPalette?.Surface ?? "#18181B",      // Updated to match FshTheme
+                Error = dto.DarkPalette?.Error ?? "#F87171",          // Updated to match FshTheme
                 Warning = dto.DarkPalette?.Warning ?? "#FBBF24",
-                Success = dto.DarkPalette?.Success ?? "#22C55E",
-                Info = dto.DarkPalette?.Info ?? "#38BDF8"
+                Success = dto.DarkPalette?.Success ?? "#34D399",      // Updated to match FshTheme
+                Info = dto.DarkPalette?.Info ?? "#60A5FA"             // Updated to match FshTheme
             },
             BrandAssets = new BrandAssets
             {

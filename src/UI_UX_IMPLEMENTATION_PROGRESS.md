@@ -27,11 +27,12 @@
 - ? Z-index configuration
 
 #### 3. Theme Management
-- ? `ThemeService` for state management
-- ? Theme persistence in localStorage
-- ? JavaScript interop for theme switching
-- ? `ThemeToggle` component (sun/moon icon button)
-- ? Registered in DI container
+- ? Integrated with existing `TenantThemeState` service
+- ? Updated default colors to match new design system
+- ? Theme toggle button already exists in AppBar (sun/moon icons)
+- ? Added data-theme attribute switching to apply CSS variables
+- ? Theme persistence via localStorage (existing functionality)
+- ? JavaScript interop for theme attribute management
 
 #### 4. Accessibility Features
 - ? Reduced motion support (`prefers-reduced-motion`)
@@ -40,25 +41,48 @@
 - ? ARIA labels ready for screen readers
 - ? Smooth theme transitions (200ms)
 
-#### 5. Updated Files
+#### 5. UI Integration
+- ? Updated `PlaygroundLayout.razor` to apply data-theme attribute
+- ? Synchronized theme changes with CSS variable system
+- ? Enhanced Home page with cards demonstrating design system
+- ? CSS variables actively used in components (--surface-paper, --text-primary, etc.)
+
+#### 6. Updated Files
 ```
 ? BuildingBlocks/Blazor.UI/wwwroot/css/fsh-design-system.css (NEW)
 ? BuildingBlocks/Blazor.UI/wwwroot/css/fsh-theme.css (UPDATED)
 ? BuildingBlocks/Blazor.UI/Theme/FshTheme.cs (UPDATED)
-? BuildingBlocks/Blazor.UI/Theme/ThemeService.cs (NEW)
-? BuildingBlocks/Blazor.UI/Components/Theme/ThemeToggle.razor (NEW)
-? BuildingBlocks/Blazor.UI/ServiceCollectionExtensions.cs (UPDATED)
+? BuildingBlocks/Blazor.UI/Theme/TenantThemeSettings.cs (UPDATED - default colors)
+? Playground/Playground.Blazor/Services/TenantThemeState.cs (UPDATED - default colors)
+? Playground/Playground.Blazor/Components/Layout/PlaygroundLayout.razor (UPDATED - data-theme)
+? Playground/Playground.Blazor/Components/Pages/Home.razor (UPDATED - demo cards)
 ? Playground/Playground.Blazor/Components/App.razor (UPDATED)
 ```
 
 ### Testing Checklist
 - ? Build successful
-- ? Theme toggle working
-- ? Dark mode rendering correctly
-- ? Light mode rendering correctly
-- ? Theme persistence across page refreshes
+- ? Theme toggle integrated in layout (AppBar)
+- ? Dark mode rendering correctly (TEST REQUIRED)
+- ? Light mode rendering correctly (TEST REQUIRED)
+- ? Theme persistence across page refreshes (TEST REQUIRED)
 - ? CSS variables accessible in components
 - ? MudBlazor components using new theme
+- ? Home page demonstrates design system
+
+### Key Implementation Notes
+
+**What Changed from Original Plan:**
+- We discovered the application already had a sophisticated theme system (`TenantThemeState`)
+- Instead of creating a new `ThemeService`, we integrated with the existing tenant theme system
+- The theme toggle button was already in place - we just needed to connect it to CSS variables
+- Added `data-theme` attribute management to apply our CSS custom properties
+
+**How It Works:**
+1. `TenantThemeState` manages theme state and MudBlazor theme objects
+2. `PlaygroundLayout` listens to theme changes and applies `data-theme="light"` or `data-theme="dark"` to `<html>`
+3. CSS variables in `fsh-design-system.css` respond to the `data-theme` attribute
+4. Components can use CSS variables like `var(--primary-main)`, `var(--surface-paper)`, etc.
+5. Default colors in `PaletteSettings` and `TenantThemeState` now match the new design system
 
 ### Next Steps for Phase 2
 
@@ -173,23 +197,6 @@
   padding: var(--spacing-4);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-}
-```
-
-### Theme Service Usage
-
-```razor
-@inject IThemeService ThemeService
-
-<MudButton OnClick="@(() => ThemeService.ToggleThemeAsync())">
-    Toggle Theme
-</MudButton>
-
-@code {
-    protected override async Task OnInitializedAsync()
-    {
-        await ThemeService.InitializeAsync();
-    }
 }
 ```
 
