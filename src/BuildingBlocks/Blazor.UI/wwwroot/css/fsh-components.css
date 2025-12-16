@@ -1,0 +1,570 @@
+/* 
+ * FSH Custom Components
+ * Enhanced component styles building on MudBlazor
+ * Phase 2: Core Components
+ */
+
+/* ============================================
+   ENHANCED CARDS
+   ============================================ */
+
+/* Base FSH Card - builds on MudCard */
+.fsh-card {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+/* Card with gradient accent */
+.fsh-card-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-main), var(--secondary-main));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.fsh-card-gradient:hover::before {
+    opacity: 1;
+}
+
+/* Interactive card with lift on hover */
+.fsh-card-interactive {
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.fsh-card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+[data-theme="dark"] .fsh-card-interactive {
+    background: linear-gradient(
+        135deg,
+        var(--surface-paper) 0%,
+        rgba(var(--primary-rgb), 0.03) 100%
+    );
+}
+
+/* Card with status indicator */
+.fsh-card-status {
+    border-left: 4px solid var(--neutral-300);
+}
+
+.fsh-card-status.status-success {
+    border-left-color: var(--success);
+}
+
+.fsh-card-status.status-warning {
+    border-left-color: var(--warning);
+}
+
+.fsh-card-status.status-error {
+    border-left-color: var(--error);
+}
+
+.fsh-card-status.status-info {
+    border-left-color: var(--info);
+}
+
+/* Card with icon badge */
+.fsh-card-icon {
+    position: relative;
+    padding-top: var(--spacing-10);
+}
+
+.fsh-card-icon-badge {
+    position: absolute;
+    top: calc(var(--spacing-4) * -1);
+    left: var(--spacing-4);
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card header enhancement */
+.fsh-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-4);
+    border-bottom: 1px solid var(--divider);
+    background: var(--surface-elevated);
+}
+
+.fsh-card-header-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.fsh-card-header-subtitle {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin: var(--spacing-1) 0 0 0;
+}
+
+/* Card actions footer */
+.fsh-card-actions {
+    display: flex;
+    gap: var(--spacing-2);
+    padding: var(--spacing-4);
+    border-top: 1px solid var(--divider);
+    background: var(--surface-elevated);
+}
+
+/* ============================================
+   ENHANCED BUTTONS
+   ============================================ */
+
+/* Gradient button */
+.fsh-btn-gradient {
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-dark)) !important;
+    color: white !important;
+    border: none !important;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.fsh-btn-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-main));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.fsh-btn-gradient:hover::before {
+    opacity: 1;
+}
+
+.fsh-btn-gradient .mud-button-label {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ghost button */
+.fsh-btn-ghost {
+    background: transparent !important;
+    border: none !important;
+    color: var(--text-primary) !important;
+}
+
+.fsh-btn-ghost:hover {
+    background: var(--surface-hover) !important;
+}
+
+/* Outline button enhancement */
+.fsh-btn-outline {
+    background: transparent !important;
+    border: 2px solid var(--primary-main) !important;
+    color: var(--primary-main) !important;
+    transition: all var(--transition-base);
+}
+
+.fsh-btn-outline:hover {
+    background: var(--primary-main) !important;
+    color: white !important;
+}
+
+/* Icon button with badge */
+.fsh-icon-btn-badge {
+    position: relative;
+}
+
+.fsh-icon-btn-badge::after {
+    content: attr(data-badge);
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: var(--radius-full);
+    background: var(--error);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Button group */
+.fsh-btn-group {
+    display: inline-flex;
+    gap: 0;
+}
+
+.fsh-btn-group > .mud-button:not(:first-child) {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    margin-left: -1px;
+}
+
+.fsh-btn-group > .mud-button:not(:last-child) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+/* ============================================
+   ENHANCED FORM INPUTS
+   ============================================ */
+
+/* Floating label enhancement */
+.fsh-input-float {
+    position: relative;
+}
+
+.fsh-input-float .mud-input-label {
+    transition: all var(--transition-base);
+}
+
+.fsh-input-float.mud-input-focused .mud-input-label,
+.fsh-input-float.mud-input-has-value .mud-input-label {
+    transform: translateY(-24px) scale(0.85);
+    color: var(--primary-main);
+}
+
+/* Input with icon */
+.fsh-input-icon {
+    position: relative;
+}
+
+.fsh-input-icon-left {
+    padding-left: var(--spacing-10) !important;
+}
+
+.fsh-input-icon-right {
+    padding-right: var(--spacing-10) !important;
+}
+
+.fsh-input-icon .fsh-icon-addon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+.fsh-input-icon .fsh-icon-addon-left {
+    left: var(--spacing-3);
+}
+
+.fsh-input-icon .fsh-icon-addon-right {
+    right: var(--spacing-3);
+}
+
+/* Search input styling */
+.fsh-search-input {
+    border-radius: var(--radius-full) !important;
+    padding-left: var(--spacing-10) !important;
+    background: var(--surface-elevated);
+}
+
+.fsh-search-input:focus {
+    background: var(--surface-paper);
+    box-shadow: var(--shadow-md);
+}
+
+/* Password strength indicator */
+.fsh-password-strength {
+    display: flex;
+    gap: var(--spacing-1);
+    margin-top: var(--spacing-2);
+}
+
+.fsh-password-strength-bar {
+    flex: 1;
+    height: 4px;
+    border-radius: var(--radius-sm);
+    background: var(--neutral-200);
+    transition: all var(--transition-base);
+}
+
+.fsh-password-strength-bar.active {
+    background: var(--success);
+}
+
+.fsh-password-strength-bar.active.weak {
+    background: var(--error);
+}
+
+.fsh-password-strength-bar.active.medium {
+    background: var(--warning);
+}
+
+.fsh-password-strength-bar.active.strong {
+    background: var(--success);
+}
+
+/* ============================================
+   STAT CARDS
+   ============================================ */
+
+.fsh-stat-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    background: var(--surface-paper);
+    border: 1px solid var(--border-default);
+    transition: all var(--transition-base);
+}
+
+.fsh-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.fsh-stat-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-4);
+    background: linear-gradient(135deg, var(--primary-main), var(--primary-dark));
+    color: white;
+}
+
+.fsh-stat-card-value {
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-2);
+}
+
+.fsh-stat-card-label {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.fsh-stat-card-trend {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-top: var(--spacing-2);
+}
+
+.fsh-stat-card-trend.positive {
+    color: var(--success);
+}
+
+.fsh-stat-card-trend.negative {
+    color: var(--error);
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+/* Skeleton loader */
+.fsh-skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--surface-elevated) 0%,
+        var(--surface-hover) 50%,
+        var(--surface-elevated) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s ease-in-out infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.fsh-skeleton-text {
+    height: 1em;
+    margin-bottom: var(--spacing-2);
+}
+
+.fsh-skeleton-title {
+    height: 1.5em;
+    width: 60%;
+    margin-bottom: var(--spacing-4);
+}
+
+.fsh-skeleton-card {
+    height: 200px;
+    width: 100%;
+}
+
+.fsh-skeleton-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+}
+
+/* Spinner */
+.fsh-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--surface-elevated);
+    border-top-color: var(--primary-main);
+    border-radius: var(--radius-full);
+    animation: spinner-rotate 0.8s linear infinite;
+}
+
+@keyframes spinner-rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.fsh-spinner-sm {
+    width: 20px;
+    height: 20px;
+    border-width: 2px;
+}
+
+.fsh-spinner-lg {
+    width: 60px;
+    height: 60px;
+    border-width: 6px;
+}
+
+/* ============================================
+   BADGES & CHIPS
+   ============================================ */
+
+.fsh-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.fsh-badge-primary {
+    background: rgba(var(--primary-rgb), 0.1);
+    color: var(--primary-main);
+}
+
+.fsh-badge-success {
+    background: rgba(var(--success-rgb), 0.1);
+    color: var(--success);
+}
+
+.fsh-badge-warning {
+    background: rgba(var(--warning-rgb), 0.1);
+    color: var(--warning);
+}
+
+.fsh-badge-error {
+    background: rgba(var(--error-rgb), 0.1);
+    color: var(--error);
+}
+
+.fsh-badge-info {
+    background: rgba(var(--info-rgb), 0.1);
+    color: var(--info);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Fade in */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fsh-fade-in {
+    animation: fade-in var(--transition-base);
+}
+
+/* Slide up */
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fsh-slide-up {
+    animation: slide-up var(--transition-base);
+}
+
+/* Scale in */
+@keyframes scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fsh-scale-in {
+    animation: scale-in var(--transition-base);
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .fsh-card-interactive,
+    .fsh-stat-card,
+    .fsh-btn-gradient,
+    .fsh-btn-outline {
+        transition: none;
+    }
+    
+    .fsh-skeleton,
+    .fsh-spinner {
+        animation: none;
+    }
+    
+    .fsh-fade-in,
+    .fsh-slide-up,
+    .fsh-scale-in {
+        animation: none;
+    }
+}

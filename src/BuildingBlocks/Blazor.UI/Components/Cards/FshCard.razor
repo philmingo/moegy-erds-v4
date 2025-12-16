@@ -1,11 +1,92 @@
-<MudPaper Class="@CssClass" Elevation="1" @attributes="AdditionalAttributes">
-    @ChildContent
-</MudPaper>
+@namespace FSH.Framework.Blazor.UI.Components.Cards
+@using MudBlazor.Utilities
+
+<MudCard Class="@GetCardClass()" Style="@StyleBuilder" Elevation="@Elevation" @attributes="AdditionalAttributes">
+    @if (ShowHeader && (HasHeaderContent || !string.IsNullOrEmpty(Title)))
+    {
+        <div class="fsh-card-header">
+            <div>
+                @if (!string.IsNullOrEmpty(Title))
+                {
+                    <h3 class="fsh-card-header-title">@Title</h3>
+                }
+                @if (!string.IsNullOrEmpty(Subtitle))
+                {
+                    <p class="fsh-card-header-subtitle">@Subtitle</p>
+                }
+                @if (HeaderContent != null)
+                {
+                    @HeaderContent
+                }
+            </div>
+            @if (HeaderActions != null)
+            {
+                <div>
+                    @HeaderActions
+                </div>
+            }
+        </div>
+    }
+    
+    @if (!string.IsNullOrEmpty(IconBadge) && ShowIconBadge)
+    {
+        <div class="fsh-card-icon-badge">
+            <MudIcon Icon="@IconBadge" Size="Size.Large" />
+        </div>
+    }
+    
+    <MudCardContent>
+        @ChildContent
+    </MudCardContent>
+    
+    @if (Actions != null)
+    {
+        <div class="fsh-card-actions">
+            @Actions
+        </div>
+    }
+</MudCard>
 
 @code {
-    [Parameter] public string? Class { get; set; }
+    [Parameter] public string? Title { get; set; }
+    [Parameter] public string? Subtitle { get; set; }
+    [Parameter] public RenderFragment? HeaderContent { get; set; }
+    [Parameter] public RenderFragment? HeaderActions { get; set; }
     [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment? Actions { get; set; }
+    [Parameter] public bool ShowHeader { get; set; } = true;
+    [Parameter] public int Elevation { get; set; } = 2;
+    [Parameter] public bool Interactive { get; set; }
+    [Parameter] public bool Gradient { get; set; }
+    [Parameter] public CardStatus? Status { get; set; }
+    [Parameter] public string? IconBadge { get; set; }
+    [Parameter] public bool ShowIconBadge { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public string? Style { get; set; }
     [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
 
-    private string CssClass => string.IsNullOrWhiteSpace(Class) ? "fsh-card" : $"fsh-card {Class}";
+    private bool HasHeaderContent => !string.IsNullOrEmpty(Title) || !string.IsNullOrEmpty(Subtitle) || HeaderContent != null || HeaderActions != null;
+
+    private string GetCardClass()
+    {
+        var builder = new CssBuilder("fsh-card");
+        
+        if (Interactive)
+            builder.AddClass("fsh-card-interactive");
+        if (Gradient)
+            builder.AddClass("fsh-card-gradient");
+        if (Status.HasValue)
+        {
+            builder.AddClass("fsh-card-status");
+            builder.AddClass($"status-{Status.ToString()!.ToLower()}");
+        }
+        if (ShowIconBadge)
+            builder.AddClass("fsh-card-icon");
+        if (!string.IsNullOrEmpty(Class))
+            builder.AddClass(Class);
+            
+        return builder.Build();
+    }
+    
+    private string StyleBuilder => Style ?? string.Empty;
 }

@@ -1,56 +1,145 @@
 @page "/welcome"
+@using FSH.Framework.Blazor.UI.Components.Cards
+@using FSH.Framework.Blazor.UI.Components.Buttons
 @inherits ComponentBase
 
 <div class="home-shell">
     <MudText Typo="Typo.h3" Class="mb-6" Style="color: var(--text-primary);">Welcome to FSH Playground</MudText>
     
-    <MudGrid>
-        <MudItem xs="12" md="4">
-            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
-                <MudCardContent>
-                    <MudIcon Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large" Class="mb-3"/>
-                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Dashboard</MudText>
-                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-                        View analytics, metrics, and key performance indicators.
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
+    @* Stat Cards Row *@
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" sm="6" md="3">
+            <FshStatCard Value="2,543"
+                        Label="Total Users"
+                        Icon="@Icons.Material.Filled.People"
+                        IconColor="var(--primary-main)"
+                        Trend="12.5m" />
         </MudItem>
-        
-        <MudItem xs="12" md="4">
-            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
-                <MudCardContent>
-                    <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" Size="Size.Large" Class="mb-3"/>
-                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Profile</MudText>
-                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-                        Manage your account settings and preferences.
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
+        <MudItem xs="12" sm="6" md="3">
+            <FshStatCard Value="$45.2K"
+                        Label="Revenue"
+                        Icon="@Icons.Material.Filled.AttachMoney"
+                        IconColor="var(--success)"
+                        Trend="8.2m" />
         </MudItem>
-        
-        <MudItem xs="12" md="4">
-            <MudCard Elevation="2" Class="pa-4" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
-                <MudCardContent>
-                    <MudIcon Icon="@Icons.Material.Filled.Assessment" Color="Color.Tertiary" Size="Size.Large" Class="mb-3"/>
-                    <MudText Typo="Typo.h6" Class="mb-2" Style="color: var(--text-primary);">Audits</MudText>
-                    <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-                        Track system events and user activities.
-                    </MudText>
-                </MudCardContent>
-            </MudCard>
+        <MudItem xs="12" sm="6" md="3">
+            <FshStatCard Value="328"
+                        Label="Active Projects"
+                        Icon="@Icons.Material.Filled.FolderOpen"
+                        IconColor="var(--info)"
+                        Trend="-3.1m" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <FshStatCard Value="94%"
+                        Label="Satisfaction"
+                        Icon="@Icons.Material.Filled.ThumbUp"
+                        IconColor="var(--warning)"
+                        Trend="5.7m" />
         </MudItem>
     </MudGrid>
 
-    <MudPaper Class="pa-6 mt-6" Elevation="1" Style="background: var(--surface-paper); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-main);">
-        <MudText Typo="Typo.h6" Class="mb-3" Style="color: var(--text-primary);">
-            <MudIcon Icon="@Icons.Material.Filled.Lightbulb" Color="Color.Warning" Class="mr-2"/>
-            Design System Active
+    @* Enhanced Cards Grid *@
+    <MudGrid Class="mb-6">
+        <MudItem xs="12" md="4">
+            <FshCard Title="Dashboard"
+                     Subtitle="View analytics and metrics"
+                     Interactive="true"
+                     Gradient="true">
+                <MudIcon Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large" Class="mb-3"/>
+                <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+                    Access real-time analytics, charts, and key performance indicators for your business.
+                </MudText>
+            </FshCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <FshCard Title="Profile"
+                     Subtitle="Manage your account"
+                     Interactive="true"
+                     Status="CardStatus.Success">
+                <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Secondary" Size="Size.Large" Class="mb-3"/>
+                <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
+                    Update your personal information, settings, and preferences.
+                </MudText>
+            </FshCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <FshCard Title="Audits"
+                     Subtitle="Track activities"
+                     Interactive="true"
+                     IconBadge="@Icons.Material.Filled.Assessment"
+                     ShowIconBadge="true">
+                <MudText Typo="Typo.body2" Style="color: var(--text-secondary); margin-top: var(--spacing-4);">
+                    Monitor system events, user activities, and security logs.
+                </MudText>
+            </FshCard>
+        </MudItem>
+    </MudGrid>
+
+    @* Button Examples *@
+    <MudPaper Class="pa-6 mb-6" Elevation="1" Style="background: var(--surface-paper); border-radius: var(--radius-lg);">
+        <MudText Typo="Typo.h6" Class="mb-4" Style="color: var(--text-primary);">
+            <MudIcon Icon="@Icons.Material.Filled.Mouse" Color="Color.Primary" Class="mr-2"/>
+            Enhanced Buttons
         </MudText>
-        <MudText Typo="Typo.body2" Style="color: var(--text-secondary);">
-            This interface now uses the new design system with CSS variables. Toggle between light and dark mode using the button in the top-right corner to see the theme changes in action!
-        </MudText>
+        <MudStack Row="true" Spacing="3" Class="mb-4" Wrap="Wrap.Wrap">
+            <FshButton ButtonVariant="FshButtonVariant.Gradient">Gradient Button</FshButton>
+            <FshButton ButtonVariant="FshButtonVariant.Outline" Color="Color.Primary">Outline Button</FshButton>
+            <FshButton ButtonVariant="FshButtonVariant.Ghost">Ghost Button</FshButton>
+            <FshButton StartIcon="@Icons.Material.Filled.Add" Color="Color.Success">With Icon</FshButton>
+            <FshButton Loading="true" Color="Color.Primary">Loading...</FshButton>
+        </MudStack>
     </MudPaper>
+
+    @* Info Card *@
+    <FshCard Status="CardStatus.Info" Class="mb-6">
+        <HeaderContent>
+            <MudStack Row="true" AlignItems="AlignItems.Center">
+                <MudIcon Icon="@Icons.Material.Filled.Lightbulb" Color="Color.Warning" />
+                <div>
+                    <MudText Typo="Typo.h6" Style="color: var(--text-primary); margin: 0;">
+                        Design System Active
+                    </MudText>
+                    <MudText Typo="Typo.caption" Style="color: var(--text-secondary);">
+                        Phase 2: Core Components
+                    </MudText>
+                </div>
+            </MudStack>
+        </HeaderContent>
+        <ChildContent>
+            <MudText Typo="Typo.body2" Class="mb-3" Style="color: var(--text-secondary);">
+                This interface now features enhanced components with interactive states, animations, and modern styling.
+                Toggle between light and dark mode using the button in the top-right corner!
+            </MudText>
+            <div class="fsh-badge-group">
+                <span class="fsh-badge fsh-badge-success">Responsive</span>
+                <span class="fsh-badge fsh-badge-primary">Accessible</span>
+                <span class="fsh-badge fsh-badge-info">Modern</span>
+            </div>
+        </ChildContent>
+    </FshCard>
+
+    @* Loading States Example *@
+    <FshCard Title="Loading States" Subtitle="Skeleton and spinner examples">
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.subtitle2" Class="mb-3">Skeleton Loader</MudText>
+                <div class="fsh-skeleton fsh-skeleton-title mb-2"></div>
+                <div class="fsh-skeleton fsh-skeleton-text mb-2"></div>
+                <div class="fsh-skeleton fsh-skeleton-text mb-2" style="width: 80%;"></div>
+                <div class="fsh-skeleton fsh-skeleton-text" style="width: 60%;"></div>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudText Typo="Typo.subtitle2" Class="mb-3">Spinner</MudText>
+                <MudStack Row="true" Spacing="3" AlignItems="AlignItems.Center">
+                    <div class="fsh-spinner fsh-spinner-sm"></div>
+                    <div class="fsh-spinner"></div>
+                    <div class="fsh-spinner fsh-spinner-lg"></div>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+    </FshCard>
 </div>
 
 <style>
@@ -58,5 +147,11 @@
         background: var(--surface-background);
         min-height: 100vh;
         padding: var(--spacing-6);
+    }
+    
+    .fsh-badge-group {
+        display: flex;
+        gap: var(--spacing-2);
+        flex-wrap: wrap;
     }
 </style>

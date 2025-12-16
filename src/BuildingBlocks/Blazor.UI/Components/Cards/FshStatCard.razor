@@ -1,0 +1,64 @@
+@namespace FSH.Framework.Blazor.UI.Components.Cards
+@using MudBlazor.Utilities
+
+<div class="fsh-stat-card @GetStatClass()" style="@StyleBuilder" @onclick="OnClick">
+    @if (!string.IsNullOrEmpty(Icon))
+    {
+        <div class="fsh-stat-card-icon" style="@IconBackgroundStyle">
+            <MudIcon Icon="@Icon" Size="Size.Large" />
+        </div>
+    }
+    
+    <div class="fsh-stat-card-value">@Value</div>
+    <div class="fsh-stat-card-label">@Label</div>
+    
+    @if (Trend.HasValue && Trend != 0)
+    {
+        <div class="fsh-stat-card-trend @(Trend > 0 ? "positive" : "negative")">
+            <MudIcon Icon="@(Trend > 0 ? Icons.Material.Filled.TrendingUp : Icons.Material.Filled.TrendingDown)" 
+                     Size="Size.Small" />
+            <span>@Math.Abs(Trend.Value)%</span>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired] public string Value { get; set; } = string.Empty;
+    [Parameter, EditorRequired] public string Label { get; set; } = string.Empty;
+    [Parameter] public string? Icon { get; set; }
+    [Parameter] public string? IconColor { get; set; }
+    [Parameter] public decimal? Trend { get; set; }
+    [Parameter] public EventCallback OnClick { get; set; }
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public string? Style { get; set; }
+
+    private string GetStatClass()
+    {
+        var builder = new CssBuilder();
+        
+        if (OnClick.HasDelegate)
+            builder.AddClass("clickable");
+        if (!string.IsNullOrEmpty(Class))
+            builder.AddClass(Class);
+            
+        return builder.Build();
+    }
+    
+    private string StyleBuilder => Style ?? string.Empty;
+    
+    private string IconBackgroundStyle
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(IconColor))
+                return string.Empty;
+            
+            if (IconColor.StartsWith("#") || IconColor.StartsWith("var("))
+            {
+                return $"background: {IconColor};";
+            }
+            
+            return $"background: linear-gradient(135deg, {IconColor}, {IconColor});";
+        }
+    }
+}

@@ -1,0 +1,61 @@
+@namespace FSH.Framework.Blazor.UI.Components.Buttons
+@using MudBlazor.Utilities
+
+<MudButton Class="@GetButtonClass()" 
+           Variant="@GetVariant()"
+           Color="@Color"
+           Size="@Size"
+           Disabled="@Disabled"
+           StartIcon="@StartIcon"
+           EndIcon="@EndIcon"
+           OnClick="@OnClick"
+           ButtonType="@ButtonType"
+           @attributes="AdditionalAttributes">
+    @if (Loading)
+    {
+        <div class="fsh-spinner fsh-spinner-sm"></div>
+    }
+    else
+    {
+        @ChildContent
+    }
+</MudButton>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public FshButtonVariant ButtonVariant { get; set; } = FshButtonVariant.Filled;
+    [Parameter] public Color Color { get; set; } = Color.Primary;
+    [Parameter] public Size Size { get; set; } = Size.Medium;
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public bool Loading { get; set; }
+    [Parameter] public string? StartIcon { get; set; }
+    [Parameter] public string? EndIcon { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter] public ButtonType ButtonType { get; set; } = ButtonType.Button;
+    [Parameter] public string? Class { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private Variant GetVariant() => ButtonVariant switch
+    {
+        FshButtonVariant.Gradient => Variant.Filled,
+        FshButtonVariant.Ghost => Variant.Text,
+        FshButtonVariant.Outline => Variant.Outlined,
+        _ => Variant.Filled
+    };
+
+    private string GetButtonClass()
+    {
+        var builder = new CssBuilder();
+        
+        if (ButtonVariant == FshButtonVariant.Gradient)
+            builder.AddClass("fsh-btn-gradient");
+        if (ButtonVariant == FshButtonVariant.Ghost)
+            builder.AddClass("fsh-btn-ghost");
+        if (ButtonVariant == FshButtonVariant.Outline)
+            builder.AddClass("fsh-btn-outline");
+        if (!string.IsNullOrEmpty(Class))
+            builder.AddClass(Class);
+            
+        return builder.Build();
+    }
+}
