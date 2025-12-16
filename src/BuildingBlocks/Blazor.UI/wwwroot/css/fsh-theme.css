@@ -3,6 +3,18 @@
 /* Import design system first */
 @import url('fsh-design-system.css');
 
+/* Global background and text color enforcement */
+html {
+  background-color: var(--surface-background);
+  min-height: 100vh;
+}
+
+body {
+  background-color: var(--surface-background);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
 :root {
   --fsh-radius: var(--radius-lg);
   --fsh-shadow: var(--shadow-md);

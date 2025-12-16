@@ -1,0 +1,216 @@
+/* 
+ * MudBlazor Component Overrides for Dark Mode
+ * Ensures all components properly use theme colors
+ */
+
+/* MudPaper - Cards and elevated surfaces */
+.mud-paper {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-paper.mud-elevation-0 {
+    background-color: transparent !important;
+}
+
+/* MudCard */
+.mud-card {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-card-content {
+    color: var(--text-primary) !important;
+}
+
+/* MudTextField and inputs */
+.mud-input {
+    color: var(--text-primary) !important;
+}
+
+.mud-input-slot input {
+    color: var(--text-primary) !important;
+}
+
+.mud-input-label {
+    color: var(--text-secondary) !important;
+}
+
+.mud-input-helper-text {
+    color: var(--text-tertiary) !important;
+}
+
+.mud-input-outlined .mud-input-outlined-border {
+    border-color: var(--border-default) !important;
+}
+
+.mud-input-outlined:hover .mud-input-outlined-border {
+    border-color: var(--text-secondary) !important;
+}
+
+/* MudText */
+.mud-typography {
+    color: inherit;
+}
+
+.mud-typography-secondary {
+    color: var(--text-secondary) !important;
+}
+
+/* MudAppBar */
+.mud-appbar {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+}
+
+/* MudDrawer */
+.mud-drawer {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-drawer-content {
+    background-color: var(--surface-paper) !important;
+}
+
+/* MudNavMenu */
+.mud-nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.mud-nav-link:hover {
+    background-color: var(--surface-hover) !important;
+}
+
+.mud-nav-link.active {
+    color: var(--primary-main) !important;
+    background-color: var(--surface-elevated) !important;
+}
+
+/* MudTable */
+.mud-table {
+    background-color: var(--surface-paper) !important;
+}
+
+.mud-table-cell {
+    color: var(--text-primary) !important;
+    border-bottom-color: var(--divider) !important;
+}
+
+.mud-table-head {
+    background-color: var(--surface-elevated) !important;
+}
+
+.mud-table-row:hover {
+    background-color: var(--surface-hover) !important;
+}
+
+/* MudDialog */
+.mud-dialog {
+    background-color: var(--surface-paper) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-dialog-title {
+    color: var(--text-primary) !important;
+}
+
+.mud-dialog-content {
+    color: var(--text-primary) !important;
+}
+
+/* MudPopover */
+.mud-popover {
+    background-color: var(--surface-elevated) !important;
+    color: var(--text-primary) !important;
+}
+
+/* MudMenu */
+.mud-menu {
+    background-color: var(--surface-elevated) !important;
+}
+
+.mud-menu-item {
+    color: var(--text-primary) !important;
+}
+
+.mud-menu-item:hover {
+    background-color: var(--surface-hover) !important;
+}
+
+/* MudSelect */
+.mud-select {
+    color: var(--text-primary) !important;
+}
+
+.mud-select-input {
+    color: var(--text-primary) !important;
+}
+
+/* MudAutocomplete */
+.mud-autocomplete {
+    color: var(--text-primary) !important;
+}
+
+/* MudDivider */
+.mud-divider {
+    border-color: var(--divider) !important;
+}
+
+/* Main content background */
+.mud-main-content {
+    background-color: var(--surface-background) !important;
+}
+
+/* Container backgrounds */
+.mud-container {
+    background-color: transparent !important;
+}
+
+/* Ensure body has correct background */
+body {
+    background-color: var(--surface-background) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Fix for avatar with no image */
+.mud-avatar {
+    background-color: var(--surface-elevated) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Buttons - ensure proper contrast */
+.mud-button-filled.mud-button-filled-primary {
+    background-color: var(--primary-main) !important;
+    color: white !important;
+}
+
+.mud-button-filled.mud-button-filled-secondary {
+    background-color: var(--secondary-main) !important;
+    color: white !important;
+}
+
+.mud-button-outlined {
+    border-color: var(--border-default) !important;
+    color: var(--text-primary) !important;
+}
+
+.mud-button-outlined:hover {
+    background-color: var(--surface-hover) !important;
+}
+
+/* Icon colors */
+.mud-icon-root {
+    color: currentColor;
+}
+
+/* Ensure disabled states work */
+.mud-disabled {
+    color: var(--text-disabled) !important;
+    opacity: 0.6;
+}
+
+/* Fix for outlined MudCard */
+.mud-card.mud-paper-outlined {
+    border-color: var(--border-default) !important;
+}
